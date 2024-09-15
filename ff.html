@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pembelian Diamond FF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Pembelian Diamond FF</h1>
+    <form id="diamondForm">
+        <label for="idGame">ID GAME:</label>
+        <input type="text" id="idGame" name="idGame" required><br>
+
+        <label for="membership">Membership (Opsional):</label>
+        <select id="membership" name="membership">
+            <option value="">--Pilih Membership--</option>
+            <option value="Level Up Pass Rp. 25.000">Level Up Pass Rp. 25.000</option>
+            <option value="Weekly Lite Membership Rp. 25.000">Weekly Lite Membership Rp. 25.000</option>
+            <option value="Weekly Membership Rp. 40.000">Weekly Membership Rp. 40.000</option>
+            <option value="Monthly Membership Rp. 100.000">Monthly Membership Rp. 100.000</option>
+            <option value="Card Rp. 50.000">Card Rp. 50.000</option>
+        </select><br>
+
+        <label for="diamond">Diamond (Opsional):</label>
+        <select id="diamond" name="diamond">
+            <option value="">--Pilih Diamond--</option>
+            <option value="5 Diamond Rp. 1.500">5 Diamond Rp. 1.500</option>
+            <option value="12 Diamond Rp. 3.000">12 Diamond Rp. 3.000</option>
+            <option value="50 Diamond Rp. 9.000">50 Diamond Rp. 9.000</option>
+            <option value="70 Diamond Rp. 11.500">70 Diamond Rp. 11.500</option>
+            <option value="140 Diamond Rp. 22.000">140 Diamond Rp. 22.000</option>
+            <option value="355 Diamond Rp. 52.000">355 Diamond Rp. 52.000</option>
+            <option value="720 Diamond Rp. 103.000">720 Diamond Rp. 103.000</option>
+            <option value="1.450 Diamond Rp. 204.000">1.450 Diamond Rp. 204.000</option>
+            <option value="2.180 Diamond Rp. 304.000">2.180 Diamond Rp. 304.000</option>
+            <option value="3.640 Diamond Rp. 505.000">3.640 Diamond Rp. 505.000</option>
+        </select><br>
+
+        <button type="submit">Kirim</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('diamondForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const idGame = document.getElementById('idGame').value;
+        const membership = document.getElementById('membership').value;
+        const diamond = document.getElementById('diamond').value;
+
+        let message = `ID GAME: ${idGame}\n`;
+
+        if (membership !== "") {
+            message += `Membership: ${membership}`;
+        } else if (diamond !== "") {
+            message += `Diamond: ${diamond}`;
+        } else {
+            alert('Pilih salah satu antara Membership atau Diamond!');
+            return;
+        }
+
+        const whatsappUrl = `https://wa.me/6281538769551?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    });
+</script>
+
+</body>
+</html>
